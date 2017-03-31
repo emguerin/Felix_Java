@@ -30,10 +30,7 @@
 		    <artifactId>findbugs-maven-plugin</artifactId>
 		    <version>3.0.4</version>
 		</dependency>
-		
     </dependencies>
-    
-    
     <build>
     	<plugins>
       		<plugin>
@@ -41,6 +38,30 @@
         		<artifactId>maven-pmd-plugin</artifactId>
         		<version>3.7</version>
       		</plugin>
+      		<plugin>
+		        <groupId>org.jacoco</groupId>
+		        <artifactId>jacoco-maven-plugin</artifactId>
+		        <version>0.7.9</version>
+		        <configuration>
+		            <output>file</output>
+		            <append>true</append>
+		        </configuration>
+		        <executions>
+		            <execution>
+		                <id>jacoco-initialize</id>
+		                <goals>
+		                    <goal>prepare-agent</goal>
+		                </goals>
+		            </execution>
+		            <execution>
+		                <id>jacoco-site</id>
+		                <phase>verify</phase>
+		                <goals>
+		                    <goal>report</goal>
+		                </goals>
+		            </execution>
+		        </executions>
+		    </plugin>  
     	</plugins>
   	</build>
 </project>
